@@ -1,0 +1,117 @@
+{% extends 'userManagement/base.html' %}
+
+{% block title %}
+FE Users
+{% endblock title %}
+
+{% block content %}
+<head>
+    <script>
+        $(document).on('click', '.confirm-delete', function(){
+            return confirm('Are you sure you want to delete this?');
+        })
+    </script>
+</head>
+<div class="container-fluid px-4">
+    <h1 class="mt-4">FE Users</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active"></li>
+    </ol>
+    <div class="content">
+        <!-- Dynamic Table Full -->
+        <div class="block">
+            <div class="block-header block-header-default">
+                <!-- <h3 class="block-title">Users </h3> -->
+
+                <!-- <a href=" url 'add_user' " class="btn btn-alt-info mr-5 mb-5 btn-success">
+                    <i class="fa fa-plus mr-5"></i>Add User
+                </a> -->
+                <!--<?php } ?> -->
+            </div>
+            <div class="block-content ">
+                <!-- DataTables functionality is initialized with .js-dataTable-full class in js/pages/be_tables_datatables.min.js which was auto compiled from _es6/pages/be_tables_datatables.js -->
+                <div class="row justify-content-start py-20">
+                    <div class="col-lg-12">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Users
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>Username</th>
+                                            <th>Employee Code</th>
+                                            <th>{{teams.0.name}}</th>
+                                            <th>{{teams.1.name}}</th>
+                                            <th>{{teams.2.name}}</th>
+                                            <th>{{teams.3.name}}</th>
+                                            <th>{{teams.4.name}}</th>
+                                            <th>{{teams.5.name}}</th>
+                                            <th>{{teams.6.name}}</th>
+                                            <th>{{teams.7.name}}</th>
+                                            <th>{{teams.8.name}}</th>
+                                            <th>{{teams.9.name}}</th>
+                                            <th>{{teams.10.name}}</th>
+                                            <th>{{teams.11.name}}</th>
+                                            <th>{{teams.12.name}}</th>
+                                            <th>{{teams.13.name}}</th>
+                                            <th>{{teams.14.name}}</th>
+                                            <th>Activity Status</th>
+                                            <th>Action Buttons</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for appuser in appusers %}
+                                        <tr>
+                                            <td class='text-center'>{{appuser}}</td>
+                                            <td class='text-center'>{{appuser.empcode}}</td>
+                                            <td class='text-center'>{{appuser.team1}}</td>
+                                            <td class='text-center'>{{appuser.team2}}</td>
+                                            <td class='text-center'>{{appuser.team3}}</td>
+                                            <td class='text-center'>{{appuser.team4}}</td>
+                                            <td class='text-center'>{{appuser.team5}}</td>
+                                            <td class='text-center'>{{appuser.team6}}</td>
+                                            <td class='text-center'>{{appuser.team7}}</td>
+                                            <td class='text-center'>{{appuser.team8}}</td>
+                                            <td class='text-center'>{{appuser.team9}}</td>
+                                            <td class='text-center'>{{appuser.team10}}</td>
+                                            <td class='text-center'>{{appuser.team11}}</td>
+                                            <td class='text-center'>{{appuser.team12}}</td>
+                                            <td class='text-center'>{{appuser.team13}}</td>
+                                            <td class='text-center'>{{appuser.team14}}</td>
+                                            <td class='text-center'>{{appuser.team15}}</td>
+                                            <td class='text-center'>{{appuser.act_status}}</td>
+                                            <td class='text-center'>
+                                                <div class='btn-group'>
+                                                    <a href="/viewUser/{{appuser.user_id}}"
+                                                        class='btn btn-sm btn-secondary' data-toggle='tooltip'
+                                                        title='View User'>
+                                                        <i class='fa fa-eye'></i>
+                                                    </a>
+                                                    <a href="/editUser/{{appuser.user_id}}"
+                                                        class='btn btn-sm btn-secondary' data-toggle='tooltip'
+                                                        title='Edit User'>
+                                                        <i class='fa fa-pencil-alt'></i>
+
+                                                        <a href="/deleteUser/{{appuser.user_id}}"
+                                                        class='btn btn-sm btn-secondary' data-toggle='tooltip'
+                                                        title='Delete User' onclick = "return confirm('Are you sure you want to delete this?')">
+                                                        <i class='fa fa-trash'></i>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

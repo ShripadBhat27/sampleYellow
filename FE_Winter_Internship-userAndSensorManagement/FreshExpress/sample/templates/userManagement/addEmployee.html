@@ -1,0 +1,319 @@
+{% extends 'userManagement/base.html' %}
+
+{% block title %}
+  Add Employee
+{% endblock title %}
+
+{% block content %}
+<body onload="hidefield()">
+<div class="conatiner-fluid px-4">
+    <br>
+    <h1 class="mt-4">
+        <i class="fa fa-users" aria-hidden="true"></i>
+        Add Employee</h1>
+    <br>
+
+    <script type="text/javascript">
+        function showother(name)
+        {
+          if(name=='Others')document.getElementById('div1').style.display="block";
+          else document.getElementById('div1').style.display="none";
+        }
+       
+       function hidefield() 
+       {
+       document.getElementById('div1').style.display='none';
+       }
+
+        function setacholder()
+        {
+            var a = document.getElementById('val-name');
+            var b = document.getElementById('val-bankachname');
+            b.value = a.value;
+        }
+        </script>
+
+    <div class="content">
+        <div class="block">
+            <div class="block-content">
+                <div class="row justify-content-start py-20">
+                    <div class="col-xl-6">
+                        <hr>
+                        <br>
+                        {% if messages %}
+                        <ul class="messages">
+                        {% for message in messages %}
+                        <li {% if message.tags %} class="{{ message.tags }}"{% endif %} style="color:red">{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                        {% endif %}
+                        <form class="js-validation-bootstrap" action="{% url 'add_employee' %}" method="POST">
+                            {% csrf_token %}
+                            <button type = 'submit' disabled style = "display:none" aria-hidden = "true" ></button>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Code</label>
+                                <div class="col-lg-8">
+                                    <input type="number" class="form-control" id="val-empcode" name="empcode" value = "{% if saverecord.empcode %}{{saverecord.empcode}}{% endif %}" placeholder="Enter the Employee Code" required>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Name</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="val-name" value = "{% if saverecord.empname %}{{saverecord.empname}}{% endif %}" name="empname" placeholder="Enter the Employee Name" onKeyUp = "setacholder();" required >
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Team</label>
+                                <div class="col-lg-8">
+                                    <select name="team" id="val-team">
+                                        <option value="{% if saverecord.team %}{{saverecord.team}}{% endif %}" selected>{% if saverecord %}{{saverecord.team}}{%else%}Choose{% endif %}</option>
+                                        {% for team in teams %}
+                                        <option>{{team.name}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Site</label>
+                                <div class="col-lg-8">
+                                    <select name="site" id="val-site">
+                                        <option value="{% if saverecord.site %}{{saverecord.site}}{% endif %}" selected>{% if saverecord %}{{saverecord.site}}{%else%}Choose{% endif %}</option>
+                                        {% for site in sites %}
+                                            <option>{{site.sitename}}</option>
+                                            {% endfor %}
+                                        </select>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Address</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="val-address" value = "{% if saverecord.address %}{{saverecord.address}}{% endif %}" name="address" placeholder="Enter the Employee Address" >
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Pincode</label>
+                                <div class="col-lg-8">
+                                    <input type="number" class="form-control" id="val-pinCode" name="pincode" value = "{% if saverecord.pincode %}{{saverecord.pincode}}{% endif %}" placeholder="Enter the Employee Pinode">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Email</label>
+                                <div class="col-lg-8">
+                                    <input type="email" class="form-control" id="val-email" name="empemail" value = "{% if saverecord.empemail %}{{saverecord.empemail}}{% endif %}" placeholder="Enter the Employee Email ID" required>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Mobile No</label>
+                                <div class="col-lg-8">
+                                    <input type="number" class="form-control" id="val-mobile2" name="mobile1" value = "{% if saverecord.mobile1 %}{{saverecord.mobile1}}{% endif %}" placeholder="Enter the Employee Mobile Number" required>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Mobile No (Alternative)</label>
+                                <div class="col-lg-8">
+                                    <input type="number" class="form-control" id="val-mobile2" name="mobile2" value = "{% if saverecord.mobile2 %}{{saverecord.mobile2}}{% endif %}" placeholder="Enter the Employee Mobile Number (Alternative)" >
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Bank Account Number</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="val-bankACno" name="bankacno" value = "{% if saverecord.bankacno %}{{saverecord.bankacno}}{% endif %}" placeholder="Enter the Employee Bank Account Number" >
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Bank IFSC Code</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="val-bankifsc" name="bankifsc" value = "{% if saverecord.bankifsc %}{{saverecord.bankifsc}}{% endif %}" placeholder="Enter the Employee Bank IFSC Code" >
+                                </div>
+                            </div>
+                            <br>
+                            
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Bank Account Holder Name</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="val-bankachname" name="acholdername" value = "{% if saverecord.acholdername %}{{saverecord.acholdername}}{% endif %}" placeholder="Enter the Employee Bank Acount Holder Name" >
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">PAN Card Number</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control pan" id="val-PAN" name="pan" value = "{% if saverecord.pan %}{{saverecord.pan}}{% endif %}" placeholder="Enter the Employee PAN Card Number" >
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Aadhaar Card Number</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="val-aadhaar" name="aadhaar" value = "{% if saverecord.aadhaar %}{{saverecord.aadhaar}}{% endif %}" placeholder="Enter the Employee Bank Account Number" >
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Gender</label>
+                                <div class="col-lg-8">
+                                        <input type="radio" id="val-gender" name="gender" value="Male">
+                                        <label for="html">Male</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio"  id="val-gender" name="gender" value="Female">
+                                        <label for="html">Female</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <input type="radio"  id="val-gender" name="gender" value="Others">
+                                        <label for="html">Others</label><br>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Date of Birth</label>
+                                <div class="col-lg-8">
+                                    <input type="date" class="form-control" id="val-DOB" name="dob">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Date of Joining</label>
+                                <div class="col-lg-8">
+                                    <input type="date" class="js-datepicker form-control" id="val-joiningDate" name="joiningdate">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Educational Qualifications</label>
+                                <div class="col-lg-8">
+                                    <select id = "val-eduqual" name="eduqual1" onchange="showother(this.options[this.selectedIndex].value)">
+                                        <option value="">Choose</option>
+                                        <option value="1st - 4 th">1<sup>st</sup> - 4<sup>th</sup></option>
+                                        <option value="5th - 9th">5<sup>th</sup> - 9<sup>th</sup></option>
+                                        <option value="10th">10<sup>th</option>
+                                        <option value="12th / Diploma">12<sup>th</sup> / Diploma</option>
+                                        <option value="Graduation">Gradutaion</option>
+                                        <option value="Post-Graduation">Post-Gradutaion</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                    <br>
+                                    <br>
+                                    <div class="col-lg-8" id="div1">
+                                        <input type="text" name="eduqual2" placeholder = "Type here"/>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Experience (In years)</label>
+                                <div class="col-lg-8">
+                                    <input type="number" class="form-control" id="val-experience" value = "{% if saverecord.experience %}{{saverecord.experience}}{% endif %}" name="experience" placeholder="Enter the Employee Experience" >
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Marital Status</label>
+                                <div class="col-lg-8">
+                                    <input type="radio" id="val-experience" name="maritalstatus" value="Married">
+                                    <label for="html">Married</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="radio"  id="val-experience" name="maritalstatus" value="Unmarried">
+                                    <label for="html">Unmarried</label><br>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Dependants</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="val-depender" name="dependants" value = "{% if saverecord.dependants %}{{saverecord.dependants}}{% endif %}" placeholder="Enter the Employee Dependants" >
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Reference Name</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="val-refName" name="refname" value = "{% if saverecord.refname %}{{saverecord.refname}}{% endif %}" placeholder="Enter the Employee Reference Name" >
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Reference Address</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="val-refAddress" name="refaddress" value = "{% if saverecord.refaddress %}{{saverecord.refaddress}}{% endif %}" placeholder="Enter the Employee Reference Address" >
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">RFID ID</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="val-RFID" name="rfid" value = "{% if saverecord.rfid %}{{saverecord.rfid}}{% endif %}" placeholder="Enter the Employee Reference ID">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">SIFA Code</label>
+                                <div class="col-lg-8">
+                                    <input type="number" class="form-control" id="val-SIFACODE" name="sifacode" value = "{% if saverecord.sifacode %}{{saverecord.sifacode}}{% endif %}" placeholder="Enter the Employee SIFA Code">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Access Type</label>
+                                <div class="col-lg-8">
+                                    <select name="accesstype" id="val-accessType">
+                                        <option value="{% if saverecord %}{{saverecord.accesstype}}{% endif %}" selected>{% if saverecord.accesstype %}{{saverecord.accesstype}}{%else%}Choose{% endif %}</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">SIFA Serial Number</label>
+                                <div class="col-lg-8">
+                                    <input type="number" class="form-control" id="val-sifaserialnumber" name="sifaserialnumber" value = "{% if saverecord.sifaserialnumber %}{{saverecord.sifaserialnumber}}{% endif %}" placeholder="Enter the Employee SIFA Serial Number">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Employee Short Code</label>
+                                <div class="col-lg-8">
+                                    <input type="text" class="form-control" id="val-empshortcode" name="empshortcode" value = "{% if saverecord.empshortcode %}{{saverecord.empshortcode}}{% endif %}" placeholder="Enter the Employee Short Code">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Activity Status</label>
+                                <div class="col-lg-8">
+                                    <input type="radio" name="actstatus" value="Active" >
+                                    <label for="html">Active</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="actstatus" value="Inactive" >
+                                    <label for="html">Inactive</label><br>
+                                </div>
+                            </div>
+                            <br>
+                            <button type="submit"class="btn btn-success" value="Submit" style="margin: 1rem;">
+                                <i class="fas fa-save"></i>
+                                <a>Save</a>
+                            </button>
+    
+                            <button class="btn btn-danger" style="margin: 1rem;">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                                <a href="{%url 'employees'%}" style="color: azure; text-decoration: none;">Cancel</a>
+                            </button>
+
+                            <button class="btn btn-secondary" style="margin: 1rem;">
+                                <i class="fa fa-refresh" aria-hidden="true"></i>
+                                <a  href="{%url 'add_employee'%}" style="color: azure; text-decoration: none;">Reset</a>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+{% endblock content %}

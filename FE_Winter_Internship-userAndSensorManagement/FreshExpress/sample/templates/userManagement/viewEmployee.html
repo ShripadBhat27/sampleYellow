@@ -1,0 +1,231 @@
+{% extends 'userManagement/base.html' %}
+
+{% block title %}
+  View Employee
+{% endblock title %}
+
+{% block content %}
+<body onload="hidefield()">
+<div class="conatiner-fluid px-4">
+    <br>
+    <h1 class="mt-4">
+        <i class="fa fa-users" aria-hidden="true"></i>
+        View Employee</h1>
+    <br>
+
+    <div class="content">
+        <div class="block">
+            <div class="block-content">
+                <div class="row justify-content-start py-20">
+                    <div class="col-xl-6">
+                        <hr>
+                        <br>
+        
+                        <form class="js-validation-bootstrap" action="{{getempid.empid}}" method="POST">
+                            {% csrf_token %}
+                            <button type = 'submit' disabled style = "display:none" aria-hidden = "true" ></button>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Code</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.empcode}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Name</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.empname}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Team</label>
+                                <div class="col-lg-8">
+                                   <label class="col-lg-4 col-form-label">{{getempid.team}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Site</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.site}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Address</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.address}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Pincode</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.pincode}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Mobile No</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.mobile1}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Mobile No (Alternative)</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.mobile2}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Bank Account Number</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.bankacno}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Bank IFSC Code</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.bankifsc}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Bank Account Holder Name</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.acholdername}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">PAN Card Number</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.pan}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Aadhaar Card Number</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.aadhaar}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Gender</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.gender}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Date of Birth</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.dob}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Date of Joining</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.joiningdate}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Educational Qualifications</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.eduqual}}</label>
+                                    <br>                                
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Experience (In years)</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.experience}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Marital Status</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.maritalstatus}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Dependants</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.dependants}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Reference Name</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.refname}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Reference Address</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.refaddress}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">RFID ID</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.rfid}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">SIFA Code</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.sifacode}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Access Type</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.accesstype}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">SIFA Serial Number</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.sifaserialnumber}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group row">
+                                <label class="col-lg-4 col-form-label">Employee Short Code</label>
+                                <div class="col-lg-8">
+                                    <label class="col-lg-4 col-form-label">{{getempid.empshortcode}}</label>
+                                </div>
+                            </div>
+                            <br>
+                            <button class="btn btn-danger" style="margin: 1rem;">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                                <a href="../../employees" style="color: azure; text-decoration: none;">Back</a>
+                            </button>
+    
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+{% endblock content %}

@@ -1,0 +1,46 @@
+{% extends 'userManagement/base.html' %}
+
+{% block title %}
+  Edit Team
+{% endblock title %}
+
+{% block content %}
+<div class="conatiner-fluid px-4">
+    <br>
+    <h1 class="mt-4">
+        <i class="fa fa-users" aria-hidden="true"></i>
+        Edit Team</h1>
+    <br>
+    <div class="content">
+        <div class="block">
+            <div class="block-content">
+                <div class="row justify-content-start py-20">
+                    <div class="col-xl-6">
+                    </hr>
+                    <form class="js-validation-bootstrap" action="{{getteam.id}}" method="post">
+                        {% csrf_token %}
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label">Team Name</label>
+                            <div class="col-lg-8">
+                                <input type="text" class="form-control" id="val-empcode" name="name" value="{{getteam.name}}" placeholder="Enter the Employee Code" >
+                            </div>
+                        </div>
+                        <br>
+                        <button type="submit"class="btn btn-success" value="Submit" style="margin: 1rem;">
+                            <i class="fas fa-save"></i>
+                            <a>Update</a>
+                        </button>
+
+                        <button class="btn btn-danger" style="margin: 1rem;">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                            <a href="../teams/" style="color: azure;">Cancel</a>
+                        </button>
+                    </form>
+                    </hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

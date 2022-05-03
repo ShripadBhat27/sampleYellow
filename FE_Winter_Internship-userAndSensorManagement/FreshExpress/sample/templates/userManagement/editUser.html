@@ -1,0 +1,346 @@
+{% extends 'userManagement/base.html' %}
+
+{% block title %}
+Edit User
+{% endblock title %}
+
+{% block content %}
+<div class="conatiner-fluid px-4">
+    <br>
+    <h1 class="mt-4">
+        <i class="fa fa-users" aria-hidden="true"></i>
+        Edit User
+    </h1>
+    <br>
+    {% if messages %}
+    <div class="alert alert-warning" role="alert">
+        <ul class="messages">
+            {%for message in messages%}
+            <li {%if message.tags%} class="{{ message.tags }}" {%endif%}>{{ message }}</li>
+            {%endfor%}
+        </ul>
+    </div>
+    {% endif %}
+    <form class="js-validation-bootstrap" action="{% url 'edit_user' user_id=getuser.user_id%}" method="POST">
+        {% csrf_token %}
+        <button type='submit' disabled style="display:none" aria-hidden="true"></button>
+        <div class="form-group row">
+            <label class="col-lg-4 col-form-label">Username</label>
+            <div class="col-lg-8">
+                <label class="col-lg-4 col-form-label">{% if getuser %}{{getuser}}{% endif %}</label>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label class="col-lg-4 col-form-label">Employee Code</label>
+            <div class="col-lg-8">
+                <label class="col-lg-4 col-form-label">{{getuser.empcode}}</label>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label class="col-lg-4 col-form-label">{{teams.0.name}}</label>
+            <div class="col-lg-8">
+                {% if getuser.team1 == "Yes" %}
+                <input type="radio" id="val-name" name="team1" value="Yes" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team1" value="Yes">
+                {%endif%}
+                <label for="html">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if getuser.team1 == "No" %}
+                <input type="radio" id="val-name" name="team1" value="No" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team1" value="No">
+                {% endif %}
+                <label for="html">No</label><br>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label class="col-lg-4 col-form-label">{{teams.1.name}}</label>
+            <div class="col-lg-8">
+                {% if getuser.team2 == "Yes" %}
+                <input type="radio" id="val-name" name="team2" value="Yes" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team2" value="Yes">
+                {%endif%}
+                <label for="html">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if getuser.team2 == "No" %}
+                <input type="radio" id="val-name" name="team2" value="No" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team2" value="No">
+                {% endif %}
+                <label for="html">No</label><br>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label class="col-lg-4 col-form-label">{{teams.2.name}}</label>
+            <div class="col-lg-8">
+                {% if getuser.team3 == "Yes" %}
+                <input type="radio" id="val-name" name="team3" value="Yes" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team3" value="Yes">
+                {%endif%}
+                <label for="html">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if getuser.team3 == "No" %}
+                <input type="radio" id="val-name" name="team3" value="No" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team3" value="No">
+                {% endif %}
+                <label for="html">No</label><br>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label class="col-lg-4 col-form-label">{{teams.3.name}}</label>
+            <div class="col-lg-8">
+                {% if getuser.team4 == "Yes" %}
+                <input type="radio" id="val-name" name="team4" value="Yes" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team4" value="Yes">
+                {%endif%}
+                <label for="html">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if getuser.team4 == "No" %}
+                <input type="radio" id="val-name" name="team4" value="No" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team4" value="No">
+                {% endif %}
+                <label for="html">No</label><br>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label class="col-lg-4 col-form-label">{{teams.4.name}}</label>
+            <div class="col-lg-8">
+                {% if getuser.team5 == "Yes" %}
+                <input type="radio" id="val-name" name="team5" value="Yes" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team5" value="Yes">
+                {%endif%}
+                <label for="html">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if getuser.team5 == "No" %}
+                <input type="radio" id="val-name" name="team5" value="No" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team5" value="No">
+                {% endif %}
+                <label for="html">No</label><br>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label class="col-lg-4 col-form-label">{{teams.5.name}}</label>
+            <div class="col-lg-8">
+                {% if getuser.team6 == "Yes" %}
+                <input type="radio" id="val-name" name="team6" value="Yes" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team6" value="Yes">
+                {%endif%}
+                <label for="html">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if getuser.team6 == "No" %}
+                <input type="radio" id="val-name" name="team6" value="No" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team6" value="No">
+                {% endif %}
+                <label for="html">No</label><br>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label class="col-lg-4 col-form-label">{{teams.6.name}}</label>
+            <div class="col-lg-8">
+                {% if getuser.team7 == "Yes" %}
+                <input type="radio" id="val-name" name="team7" value="Yes" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team7" value="Yes">
+                {%endif%}
+                <label for="html">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if getuser.team7 == "No" %}
+                <input type="radio" id="val-name" name="team7" value="No" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team7" value="No">
+                {% endif %}
+                <label for="html">No</label><br>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label class="col-lg-4 col-form-label">{{teams.7.name}}</label>
+            <div class="col-lg-8">
+                {% if getuser.team8 == "Yes" %}
+                <input type="radio" id="val-name" name="team8" value="Yes" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team8" value="Yes">
+                {%endif%}
+                <label for="html">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if getuser.team8 == "No" %}
+                <input type="radio" id="val-name" name="team8" value="No" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team8" value="No">
+                {% endif %}
+                <label for="html">No</label><br>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label class="col-lg-4 col-form-label">{{teams.8.name}}</label>
+            <div class="col-lg-8">
+                {% if getuser.team9 == "Yes" %}
+                <input type="radio" id="val-name" name="team9" value="Yes" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team9" value="Yes">
+                {%endif%}
+                <label for="html">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if getuser.team9 == "No" %}
+                <input type="radio" id="val-name" name="team9" value="No" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team9" value="No">
+                {% endif %}
+                <label for="html">No</label><br>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label class="col-lg-4 col-form-label">{{teams.9.name}}</label>
+            <div class="col-lg-8">
+                {% if getuser.team10 == "Yes" %}
+                <input type="radio" id="val-name" name="team10" value="Yes" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team10" value="Yes">
+                {%endif%}
+                <label for="html">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if getuser.team10 == "No" %}
+                <input type="radio" id="val-name" name="team10" value="No" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team10" value="No">
+                {% endif %}
+                <label for="html">No</label><br>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label class="col-lg-4 col-form-label">{{teams.10.name}}</label>
+            <div class="col-lg-8">
+                {% if getuser.team11 == "Yes" %}
+                <input type="radio" id="val-name" name="team11" value="Yes" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team11" value="Yes">
+                {%endif%}
+                <label for="html">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if getuser.team11 == "No" %}
+                <input type="radio" id="val-name" name="team11" value="No" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team11" value="No">
+                {% endif %}
+                <label for="html">No</label><br>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label class="col-lg-4 col-form-label">{{teams.11.name}}</label>
+            <div class="col-lg-8">
+                {% if getuser.team12 == "Yes" %}
+                <input type="radio" id="val-name" name="team12" value="Yes" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team12" value="Yes">
+                {%endif%}
+                <label for="html">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if getuser.team12 == "No" %}
+                <input type="radio" id="val-name" name="team12" value="No" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team12" value="No">
+                {% endif %}
+                <label for="html">No</label><br>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label class="col-lg-4 col-form-label">{{teams.12.name}}</label>
+            <div class="col-lg-8">
+                {% if getuser.team13 == "Yes" %}
+                <input type="radio" id="val-name" name="team13" value="Yes" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team13" value="Yes">
+                {%endif%}
+                <label for="html">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if getuser.team13 == "No" %}
+                <input type="radio" id="val-name" name="team13" value="No" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team13" value="No">
+                {% endif %}
+                <label for="html">No</label><br>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label class="col-lg-4 col-form-label">{{teams.13.name}}</label>
+            <div class="col-lg-8">
+                {% if getuser.team14 == "Yes" %}
+                <input type="radio" id="val-name" name="team14" value="Yes" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team14" value="Yes">
+                {%endif%}
+                <label for="html">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if getuser.team14 == "No" %}
+                <input type="radio" id="val-name" name="team14" value="No" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team14" value="No">
+                {% endif %}
+                <label for="html">No</label><br>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label class="col-lg-4 col-form-label">{{teams.14.name}}</label>
+            <div class="col-lg-8">
+                {% if getuser.team15 == "Yes" %}
+                <input type="radio" id="val-name" name="team15" value="Yes" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team15" value="Yes">
+                {%endif%}
+                <label for="html">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if getuser.team15 == "No" %}
+                <input type="radio" id="val-name" name="team15" value="No" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="team15" value="No">
+                {% endif %}
+                <label for="html">No</label><br>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label class="col-lg-4 col-form-label">Activity Status</label>
+            <div class="col-lg-8">
+                {% if getuser.act_status == "Active" %}
+                <input type="radio" id="val-name" name="act_status" value="Active" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="act_status" value="Active">
+                {% endif %}
+                <label for="html">Active</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% if getuser.act_status == "Inactive" %}
+                <input type="radio" id="val-name" name="act_status" value="Inactive" checked>
+                {%else%}
+                <input type="radio" id="val-name" name="act_status" value="Inactive">
+                {% endif %}
+                <label for="html">Inactive</label><br>
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-success" value="Submit" style="margin: 1rem;">
+            <i class="fas fa-save"></i>
+            <a>Update</a>
+        </button>
+
+        <button class="btn btn-danger" style="margin: 1rem;">
+            <i class="fa fa-times" aria-hidden="true"></i>
+            <a href="{%url 'feusers'%}" style="color: azure; text-decoration: none;">Cancel</a>
+        </button>
+    </form>
+    </hr>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+{% endblock content %}

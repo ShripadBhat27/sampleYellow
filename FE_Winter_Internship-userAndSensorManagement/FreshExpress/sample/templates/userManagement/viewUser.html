@@ -1,0 +1,169 @@
+{% extends 'userManagement/base.html' %}
+
+{% block title %}
+    View User
+{% endblock title %}
+
+{% block content %}
+<div class="conatiner-fluid px-4">
+    <br>
+    <h1 class="mt-4">
+        <i class="fa fa-users" aria-hidden="true"></i>
+        View User
+    </h1>
+    <br>
+    <div class="content">
+        <div class="block">
+            <div class="block-content">
+                <div class="row justify-content-start py-20">
+                    <div class="col-xl-6">
+                        <hr>
+                        <br>
+                        {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                            <li {% if message.tags %} class="{{ message.tags }}" {% endif %} style="color:red">{{
+                                message }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label">Username</label>
+                            <div class="col-lg-8">
+
+                                <label class="col-lg-4 col-form-label">{% if getuser %}{{getuser}}{%endif%}</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label">Employee Code</label>
+                            <div class="col-lg-8">
+                                <label class="col-lg-4 col-form-label">{{getuser.empcode}}</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label">{{teams.0.name}}</label>
+                            <div class="col-lg-8">
+                                <label class="col-lg-4 col-form-label">{{getuser.team1}}</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label">{{teams.1.name}}</label>
+                            <div class="col-lg-8">
+                                <label class="col-lg-4 col-form-label">{{getuser.team2}}</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label">{{teams.2.name}}</label>
+                            <div class="col-lg-8">
+                                <label class="col-lg-4 col-form-label">{{getuser.team3}}</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label">{{teams.3.name}}</label>
+                            <div class="col-lg-8">
+                                <label class="col-lg-4 col-form-label">{{getuser.team4}}</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label">{{teams.4.name}}</label>
+                            <div class="col-lg-8">
+                                <label class="col-lg-4 col-form-label">{{getuser.team5}}</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label">{{teams.5.name}}</label>
+                            <div class="col-lg-8">
+                                <label class="col-lg-4 col-form-label">{{getuser.team6}}</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label">{{teams.6.name}}</label>
+                            <div class="col-lg-8">
+                                <label class="col-lg-4 col-form-label">{{getuser.team7}}</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label">{{teams.7.name}}</label>
+                            <div class="col-lg-8">
+                                <label class="col-lg-4 col-form-label">{{getuser.team8}}</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label">{{teams.8.name}}</label>
+                            <div class="col-lg-8">
+                                <label class="col-lg-4 col-form-label">{{getuser.team9}}</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label">{{teams.9.name}}</label>
+                            <div class="col-lg-8">
+                                <label class="col-lg-4 col-form-label">{{getuser.team10}}</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label">{{teams.10.name}}</label>
+                            <div class="col-lg-8">
+                                <label class="col-lg-4 col-form-label">{{getuser.team11}}</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label">{{teams.11.name}}</label>
+                            <div class="col-lg-8">
+                                <label class="col-lg-4 col-form-label">{{getuser.team12}}</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label">{{teams.12.name}}</label>
+                            <div class="col-lg-8">
+                                <label class="col-lg-4 col-form-label">{{getuser.team13}}</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label">{{teams.13.name}}</label>
+                            <div class="col-lg-8">
+                                <label class="col-lg-4 col-form-label">{{getuser.team14}}</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label">{{teams.14.name}}</label>
+                            <div class="col-lg-8">
+                                <label class="col-lg-4 col-form-label">{{getuser.team15}}</label>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label">Activity Status</label>
+                            <div class="col-lg-8">
+                                <label class="col-lg-4 col-form-label">{{getuser.act_status}}</label>
+                            </div>
+                        </div>
+                        <br>
+                        <button class="btn btn-danger" style="margin: 1rem;">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                            <a href="{%url 'feusers'%}" style="color: azure; text-decoration: none;">Back</a>
+                        </button>
+                        </form>
+                        </hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
